@@ -1,0 +1,77 @@
+server:
+  port: 8088
+---
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: reservation
+          uri: http://localhost:8081
+          predicates:
+            - Path=/reservations/**
+        - id: moviemng
+          uri: http://localhost:8082
+          predicates:
+            - Path=/movieMngs/**
+        - id: payment
+          uri: http://localhost:8083
+          predicates:
+            - Path=/payments/**
+        - id: seatmng
+          uri: http://localhost:8084
+          predicates:
+            - Path=/seatMngs/**
+        - id: mypage
+          uri: http://localhost:8085
+          predicates:
+            - Path= /myPages/**
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+---
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: reservation
+          uri: http://reservation:8080
+          predicates:
+            - Path=/reservations/**, /reserve/**, /cancel/**
+        - id: moviemng
+          uri: http://moviemng:8080
+          predicates:
+            - Path=/movieMngs/**, /isExist/**
+        - id: payment
+          uri: http://payment:8080
+          predicates:
+            - Path=/payments/**, /pay/**, /payCancled/**
+        - id: seatmng
+          uri: http://seatmng:8080, /seatRequest/**, /seatCancel/**
+          predicates:
+            - Path=/seatMngs/**
+        - id: mypage
+          uri: http://mypage:8080
+          predicates:
+            - Path= /myPages/**
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
