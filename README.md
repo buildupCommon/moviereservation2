@@ -29,9 +29,8 @@
 # 분석/설계
 
 ## Event Storming 결과
-* MSAEz 로 모델링한 이벤트스토밍 결과:  http://www.msaez.io/#/storming/WpY4xioLpHPrZpRPBibQCIH6sv53/share/3949b62d564a5706174fe3b45a7ba4b4
-![image](https://user-images.githubusercontent.com/30439935/119307210-4c8f8800-bca6-11eb-920c-9e78ad57ba27.png)
-
+* MSAEz 로 모델링한 이벤트스토밍 결과:  
+![1](https://user-images.githubusercontent.com/54625960/121278735-36243600-c90e-11eb-9079-f41c146eee51.PNG)
 
 
 
@@ -46,10 +45,10 @@ mvn spring-boot:run
 cd payment
 mvn spring-boot:run 
 
-cd seatmanagement
+cd seatmng
 mvn spring-boot:run  
 
-cd ticketmanagement
+cd moviemng
 mvn spring-boot:run  
 
 cd mypage
@@ -60,12 +59,11 @@ python policy-handler.py
 ## DDD 의 적용
 
 ```
-# reservation 서비스의 예매처리
-http POST http://acde84ae9f71a41a5962df4b3fbe9e34-1349237753.ap-southeast-1.elb.amazonaws.com/reservations customerName="홍길동" movieName="사탄의인형3" reservationStatus="예매완료"
+# moviemng 서비스의 영화등록
+http POST localhost:8082/movieMngs name="avengers" summary="avengers avengers"
 
-# payment 서비스의 결제확인
-http GET http://acde84ae9f71a41a5962df4b3fbe9e34-1349237753.ap-southeast-1.elb.amazonaws.com/payments
-
+# reserve 서비스의 결제확인
+http POST localhost:8081/reserve movieName="avengers" seatNumber=10 paymentType="Credit" customerId=10
 ```
 
 
