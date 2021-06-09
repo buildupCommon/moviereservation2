@@ -55,9 +55,9 @@ spring:
           predicates:
             - Path=/payments/**, /pay/**, /payCancled/**
         - id: seatmng
-          uri: http://seatmng:8080, /seatRequest/**, /seatCancel/**
+          uri: http://seatmng:8080
           predicates:
-            - Path=/seatMngs/**
+            - Path=/seatMngs/**, /seatRequest/**, /seatCancel/**
         - id: mypage
           uri: http://mypage:8080
           predicates:
