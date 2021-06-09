@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import org.springframework.beans.BeanUtils;
@@ -41,8 +41,8 @@ public class Payment {
 
     }
 
-    @PrePersist
-    public void onPrePersist() {
+    @PostPersist
+    public void onPostPersist() {
         Approved approved = new Approved();
         BeanUtils.copyProperties(this, approved);
         approved.publishAfterCommit();

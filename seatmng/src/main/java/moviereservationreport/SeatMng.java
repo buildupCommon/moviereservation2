@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
 import javax.persistence.Table;
 
 import org.springframework.beans.BeanUtils;
@@ -26,10 +27,14 @@ public class SeatMng {
         BeanUtils.copyProperties(this, seatRequested);
         seatRequested.publishAfterCommit();
 
+    }
+
+    @PostRemove
+    public void onPostRemove() {
+
         SeatCanceled seatCanceled = new SeatCanceled();
         BeanUtils.copyProperties(this, seatCanceled);
         seatCanceled.publishAfterCommit();
-
     }
 
     public Long getId() {

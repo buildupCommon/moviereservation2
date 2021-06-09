@@ -85,7 +85,7 @@ public class MyPageViewHandler {
             if (!canceled.validate())
                 return;
             // view 레파지 토리에 삭제 쿼리
-            myPageRepository.deleteByReservationId(canceled.getId());
+            // myPageRepository.deleteByReservationId(canceled.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,7 +97,7 @@ public class MyPageViewHandler {
             if (!payCanceled.validate())
                 return;
             // view 레파지 토리에 삭제 쿼리
-            myPageRepository.deleteByPaymentId(payCanceled.getId());
+            // myPageRepository.deleteByPaymentId(payCanceled.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class MyPageViewHandler {
             if (!seatCanceled.validate())
                 return;
             // view 레파지 토리에 삭제 쿼리
-            myPageRepository.deleteBySeatMngId(seatCanceled.getId());
+            // myPageRepository.deleteBySeatMngId(seatCanceled.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
