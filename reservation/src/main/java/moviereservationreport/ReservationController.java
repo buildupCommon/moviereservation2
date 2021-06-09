@@ -1,6 +1,7 @@
 package moviereservationreport;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,9 @@ public class ReservationController {
         private ReservationRepository repository;
 
         @RequestMapping(method = RequestMethod.POST, path = "/reserve")
-        @HystrixCommand(fallbackMethod = "failback")
+        @HystrixCommand(fallbackMethod = "failback", commandProperties = {
+                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+                        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10") })
         public void reserve(@RequestBody Reservation reservation) {
                 logger.info("called reserve param " + reservation);
                 moviereservationreport.external.MovieMng movieMng = new moviereservationreport.external.MovieMng();
