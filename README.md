@@ -69,24 +69,31 @@ http POST localhost:8081/reserve movieName="avengers" seatNumber=10 paymentType=
 ## CQRS
 
 1. 영화 등록
+
 ![22](https://user-images.githubusercontent.com/54625960/121301883-cf197800-c933-11eb-8fa3-01766b8ffb3f.PNG)
 
 2. 영화 조회
+
 ![23](https://user-images.githubusercontent.com/54625960/121301888-d0e33b80-c933-11eb-95c5-3d78efed094c.PNG)
 
 3. 예매 등록
+
 ![24](https://user-images.githubusercontent.com/54625960/121301893-d2146880-c933-11eb-8b53-1702cda3fb66.PNG)
 
 4. 예매 조회
+
 ![25](https://user-images.githubusercontent.com/54625960/121301899-d3459580-c933-11eb-8865-ec93d937a76e.PNG)
 
 5. 결재 조회
+
 ![26](https://user-images.githubusercontent.com/54625960/121301906-d476c280-c933-11eb-825e-291fd8b0a0d3.PNG)
 
 6. 좌석 조회
+
 ![27](https://user-images.githubusercontent.com/54625960/121301910-d5a7ef80-c933-11eb-94d2-53fbdfa869ef.PNG)
 
 7. 마이페이지 조회
+
 ![28](https://user-images.githubusercontent.com/54625960/121301913-d6d91c80-c933-11eb-8a55-bcc33a9fff77.PNG)
 
 ## GATEWAY
@@ -100,12 +107,15 @@ k8s 클러스터에서 gateway를 loadbalancer 서비스로 설정하였습니�
 각 서비스들을 접속 테스트를 진행하였습니다.
 
 1. Reservastion
+
 ![19](https://user-images.githubusercontent.com/54625960/121299440-64b30880-c930-11eb-9c19-4efd83b907b5.PNG)
 
 2. MovieMng
+
 ![20](https://user-images.githubusercontent.com/54625960/121299442-65e43580-c930-11eb-96f8-8d41d8cafa87.PNG)
 
 3. Payment
+
 ![21](https://user-images.githubusercontent.com/54625960/121299446-67156280-c930-11eb-89bc-b9003be00245.PNG)
 
 ## Livenessprobe
@@ -113,6 +123,7 @@ k8s 클러스터에서 gateway를 loadbalancer 서비스로 설정하였습니�
 livenessprobe 설정을 하였고 이를 테스트 하기 위해
 application.yml 내 설정파일 중 DB 접속 url을 제거 후 livenessprobe를 통해 해당 pod의 컨테이너가 liveness가 될 수 없도록 설정 후
 재시작이 되는지를 확인한다.
+
 ![32](https://user-images.githubusercontent.com/54625960/121310749-a77bdd00-c93e-11eb-8cbf-738f5e3f7297.PNG)
 
 ![33](https://user-images.githubusercontent.com/54625960/121310762-aa76cd80-c93e-11eb-8951-93b764321310.PNG)
@@ -289,6 +300,10 @@ Hystrix 를 설정: 요청처리 쓰레드에서 처리시간이 610 밀리가 �
 ![16](https://user-images.githubusercontent.com/54625960/121296338-7219c400-c92b-11eb-9c5f-a62812d64f60.PNG)
 
 ![17](https://user-images.githubusercontent.com/54625960/121296343-734af100-c92b-11eb-825c-74c56e9676c5.PNG)
+
+중간에 circuit 브레이크 되서 빨리 차단되는 부분
+
+![37](https://user-images.githubusercontent.com/54625960/121314665-89b07700-c942-11eb-927a-bad4968fbf4d.PNG)
 
 
 ### 오토스케일 아웃
