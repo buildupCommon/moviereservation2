@@ -1,7 +1,6 @@
 server:
   port: 8080
 ---
-
 spring:
   profiles: default
   jpa:
@@ -37,8 +36,14 @@ logging:
     org.springframework.cloud: debug
 server:
   port: 8081
+hystrix:
+  command:
+    myusers-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 610
 ---
-
 spring:
   profiles: docker
   cloud:
@@ -62,3 +67,10 @@ spring:
         event-out:
           destination: moviereservationreport
           contentType: application/json
+hystrix:
+  command:
+    myusers-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 610
