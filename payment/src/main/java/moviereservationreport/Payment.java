@@ -47,6 +47,12 @@ public class Payment {
         BeanUtils.copyProperties(this, approved);
         approved.publishAfterCommit();
 
+        try {
+            Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
