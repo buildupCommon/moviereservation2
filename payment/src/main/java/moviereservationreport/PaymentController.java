@@ -22,11 +22,6 @@ public class PaymentController {
         public void pay(@RequestBody Payment payment) {
                 logger.info("called pay param : " + payment);
 
-                try {
-                        Thread.currentThread().sleep((long) (400 + Math.random() * 220));
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
                 repository.save(payment);
         }
 
