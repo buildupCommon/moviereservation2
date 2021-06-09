@@ -38,11 +38,9 @@ server:
   port: 8081
 hystrix:
   command:
-    myusers-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 610
+    # 전역설정
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 610
 ---
 spring:
   profiles: docker
@@ -69,8 +67,6 @@ spring:
           contentType: application/json
 hystrix:
   command:
-    myusers-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 610
+    # 전역설정
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 610
