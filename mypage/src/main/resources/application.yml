@@ -46,6 +46,15 @@ server:
 ---
 spring:
   profiles: docker
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      auto-ddl: update
+      use-new-id-generator-mappings: false
+    generate-ddl: true
   cloud:
     stream:
       kafka:
@@ -67,3 +76,7 @@ spring:
         event-out:
           destination: moviereservationreport
           contentType: application/json
+  datasource:
+    url: jdbc:mysql://database-2.cxbzaw0b0fi0.ap-northeast-2.rds.amazonaws.com/innodb
+    username: admin
+    password: hi591005
