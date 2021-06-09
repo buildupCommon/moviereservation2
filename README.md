@@ -220,43 +220,20 @@ source build, dockering에서 필요한 경로를 아래와 같이 개별 프로
 
 * 서킷 브레이킹 프레임워크의 선택: Spring Hystrix 옵션을 사용하여 구현함
 
-시나리오는 예약(Reservation)-->결제(pay) 시의 연결을 RESTful Request/Response 로 연동하여 구현이 되어있고, 결제 요청이 과도할 경우 CB 를 통하여 장애격리.
+시나리오는 예약(Reservation)-->결제(payment) 시의 연결을 RESTful Request/Response 로 연동하여 구현이 되어있고, 결제 요청이 과도할 경우 CB 를 통하여 장애격리.
+Hystrix 를 설정: 요청처리 쓰레드에서 처리시간이 610 밀리가 넘어서기 시작하여 어느정도 유지되면 CB 회로가 닫히도록 (요청을 빠르게 실패처리, 차단) 설정
 
-- Hystrix 를 설정:  요청처리 쓰레드에서 1초 미만, 요청 실패율이 10ㅃ% 를 넘어갈 경우 CB 작동하여 접속자가 많다는 메세지 발송
+![11](https://user-images.githubusercontent.com/54625960/121296173-2cf59200-c92b-11eb-937f-34705fbbb0c8.PNG)
 
-```
-### (Reservation)Reservation.java
+피호출 서비스(결제:payment) 의 임의 부하 처리 - 400 밀리에서 증감 220 밀리 정도 왔다갔다 하게
+![12](https://user-images.githubusercontent.com/54625960/121296182-2ff08280-c92b-11eb-81d3-7933adf8f792.PNG)
 
+부하테스터 siege 툴을 통한 서킷 브레이커 동작 확인:
+동시사용자 150명
+60초 동안 실시
+![16](https://user-images.githubusercontent.com/54625960/121296338-7219c400-c92b-11eb-9c5f-a62812d64f60.PNG)
 
-   @HystrixCommand(fallbackMethod = "reservationFallback",
-   
-            commandProperties = {
-                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
-                    
-                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10")
-                    
-            })
-
-
-
-```
-
-- 결제 서비스에 부하를 주지 않도록, 결제 서비스의 응답이 정상적이지 않을 경우 아래 Fallback 함수 작동
-
-- application.yml 에 설정하는 방법도 있지만,  property 가 많지 않아 설정
-
-- Command Key 의 경우 Default 함수인 onPostPersist 에서 Count
-
-
-```
-    
-    public String reservationFallback(){
-        return "접속자가 많아 기다리셔야 합니다";
-    }
-
-
-
-```
+![17](https://user-images.githubusercontent.com/54625960/121296343-734af100-c92b-11eb-825c-74c56e9676c5.PNG)
 
 
 ### 오토스케일 아웃
