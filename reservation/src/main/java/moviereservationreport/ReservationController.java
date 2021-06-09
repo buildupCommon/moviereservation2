@@ -22,7 +22,7 @@ public class ReservationController {
         private ReservationRepository repository;
 
         @RequestMapping(method = RequestMethod.POST, path = "/reserve")
-        @HystrixCommand(fallbackMethod = "failback", commandProperties = {
+        @HystrixCommand(commandProperties = {
                         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
                         @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10") })
         public void reserve(@RequestBody Reservation reservation) {
@@ -50,9 +50,4 @@ public class ReservationController {
                 repository.deleteById(reservation.getId());
         }
 
-        public ResponseEntity<?> failback() {
-
-                return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-        }
 }

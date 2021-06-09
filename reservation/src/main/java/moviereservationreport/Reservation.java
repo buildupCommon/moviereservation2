@@ -9,8 +9,6 @@ import javax.persistence.PostRemove;
 import javax.persistence.Table;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 @Entity
 @Table(name = "Reservation_table")
@@ -114,9 +112,4 @@ public class Reservation {
         return sb.toString();
     }
 
-    public ResponseEntity<?> failback() {
-
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
 }
