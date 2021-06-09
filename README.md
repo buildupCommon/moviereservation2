@@ -113,6 +113,13 @@ k8s 클러스터에서 gateway를 loadbalancer 서비스로 설정하였습니�
 livenessprobe 설정을 하였고 이를 테스트 하기 위해
 application.yml 내 설정파일 중 DB 접속 url을 제거 후 livenessprobe를 통해 해당 pod의 컨테이너가 liveness가 될 수 없도록 설정 후
 재시작이 되는지를 확인한다.
+![32](https://user-images.githubusercontent.com/54625960/121310749-a77bdd00-c93e-11eb-8cbf-738f5e3f7297.PNG)
+
+![33](https://user-images.githubusercontent.com/54625960/121310762-aa76cd80-c93e-11eb-8951-93b764321310.PNG)
+
+![34](https://user-images.githubusercontent.com/54625960/121310767-aba7fa80-c93e-11eb-9a52-1544fd4f025d.PNG)
+
+![35](https://user-images.githubusercontent.com/54625960/121310768-acd92780-c93e-11eb-9808-d8e4d57c86ec.PNG)
 
 
 ## 폴리글랏 프로그래밍, 퍼시스턴스
