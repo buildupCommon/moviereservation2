@@ -66,6 +66,35 @@ http POST localhost:8082/movieMngs name="avengers" summary="avengers avengers"
 http POST localhost:8081/reserve movieName="avengers" seatNumber=10 paymentType="Credit" customerId=10
 ```
 
+## CQRS
+
+
+
+## GATEWAY
+외부에서 오는 접속은 Gateway를 통해서만 접속이 됩니다.
+
+이를 위해 gateway 프로젝트를 생성 및 클러스터 내의 서비스들을 게이트웨이를 통해 접속할 수 있도록 설정하였으며,
+k8s 클러스터에서 gateway를 loadbalancer 서비스로 설정하였습니다.
+
+![18](https://user-images.githubusercontent.com/54625960/121299401-51a03880-c930-11eb-8a42-bf0d2e1cdc1c.PNG)
+
+각 서비스들을 접속 테스트를 진행하였습니다.
+
+1. Reservastion
+![19](https://user-images.githubusercontent.com/54625960/121299440-64b30880-c930-11eb-9c19-4efd83b907b5.PNG)
+
+2. MovieMng
+![20](https://user-images.githubusercontent.com/54625960/121299442-65e43580-c930-11eb-96f8-8d41d8cafa87.PNG)
+
+3. Payment
+![21](https://user-images.githubusercontent.com/54625960/121299446-67156280-c930-11eb-89bc-b9003be00245.PNG)
+
+## Livenessprobe
+
+livenessprobe 설정을 하였고 이를 테스트 하기 위해
+application.yml 내 설정파일 중 DB 접속 url을 제거 후 livenessprobe를 통해 해당 pod의 컨테이너가 liveness가 될 수 없도록 설정 후
+재시작이 되는지를 확인한다.
+
 
 ## 폴리글랏 프로그래밍, 퍼시스턴스
 
