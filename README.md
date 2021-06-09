@@ -68,7 +68,26 @@ http POST localhost:8081/reserve movieName="avengers" seatNumber=10 paymentType=
 
 ## CQRS
 
+1. 영화 등록
+![22](https://user-images.githubusercontent.com/54625960/121301883-cf197800-c933-11eb-8fa3-01766b8ffb3f.PNG)
 
+2. 영화 조회
+![23](https://user-images.githubusercontent.com/54625960/121301888-d0e33b80-c933-11eb-95c5-3d78efed094c.PNG)
+
+3. 예매 등록
+![24](https://user-images.githubusercontent.com/54625960/121301893-d2146880-c933-11eb-8b53-1702cda3fb66.PNG)
+
+4. 예매 조회
+![25](https://user-images.githubusercontent.com/54625960/121301899-d3459580-c933-11eb-8865-ec93d937a76e.PNG)
+
+5. 결재 조회
+![26](https://user-images.githubusercontent.com/54625960/121301906-d476c280-c933-11eb-825e-291fd8b0a0d3.PNG)
+
+6. 좌석 조회
+![27](https://user-images.githubusercontent.com/54625960/121301910-d5a7ef80-c933-11eb-94d2-53fbdfa869ef.PNG)
+
+7. 마이페이지 조회
+![28](https://user-images.githubusercontent.com/54625960/121301913-d6d91c80-c933-11eb-8a55-bcc33a9fff77.PNG)
 
 ## GATEWAY
 외부에서 오는 접속은 Gateway를 통해서만 접속이 됩니다.
