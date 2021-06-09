@@ -20,7 +20,7 @@ public class ReservationController {
         private ReservationRepository repository;
 
         @RequestMapping(method = RequestMethod.POST, path = "/reserve")
-        @HystrixCommand(fallbackMethod = "reservationFallback", commandProperties = {
+        @HystrixCommand(commandProperties = {
                         @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "610") })
         public void reserve(@RequestBody Reservation reservation) {
                 logger.info("called reserve param " + reservation);
@@ -46,9 +46,4 @@ public class ReservationController {
 
                 repository.deleteById(reservation.getId());
         }
-
-        public String reservationFallback() {
-                return "접속자가 많아 기다리셔야 합니다";
-        }
-
 }
