@@ -23,7 +23,7 @@ public class ReservationController {
 
         @RequestMapping(method = RequestMethod.POST, path = "/reserve")
         @HystrixCommand(commandProperties = {
-                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "600"),
                         @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10") })
         public void reserve(@RequestBody Reservation reservation) {
                 logger.info("called reserve param " + reservation);
