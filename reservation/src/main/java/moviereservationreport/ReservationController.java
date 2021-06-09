@@ -21,7 +21,7 @@ public class ReservationController {
 
         @RequestMapping(method = RequestMethod.POST, path = "/reserve")
         @HystrixCommand(commandProperties = {
-                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "610") })
+                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "210") })
         public void reserve(@RequestBody Reservation reservation) {
                 logger.info("called reserve param " + reservation);
                 moviereservationreport.external.MovieMng movieMng = new moviereservationreport.external.MovieMng();
