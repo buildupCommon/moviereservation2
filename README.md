@@ -290,6 +290,10 @@ Hystrix 를 설정: 요청처리 쓰레드에서 처리시간이 610 밀리가 �
 
 ![17](https://user-images.githubusercontent.com/54625960/121296343-734af100-c92b-11eb-825c-74c56e9676c5.PNG)
 
+중간에 circuit 브레이크 되서 빨리 차단되는 부분
+
+![37](https://user-images.githubusercontent.com/54625960/121314665-89b07700-c942-11eb-927a-bad4968fbf4d.PNG)
+
 
 ### 오토스케일 아웃
 앞서 CB 는 시스템을 안정되게 운영할 수 있게 해줬지만 사용자의 요청을 100% 받아들여주지 못했기 때문에 이에 대한 보완책으로 자동화된 확장 기능을 적용하고자 한다. 
